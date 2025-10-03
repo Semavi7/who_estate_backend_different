@@ -9,7 +9,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import { createConnection } from 'typeorm';
-import { AppDataSource } from './config/database';
+import { AppDataSource, initializeDatabase } from './config/database';
 import { errorHandler } from './middleware/errorHandler';
 import { authRoutes } from './routes/auth.routes';
 import { userRoutes } from './routes/user.routes';
@@ -21,6 +21,8 @@ import { clientIntakeRoutes } from './routes/clientIntake.routes';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+bootstrap();
 
 // Middleware
 app.use(helmet());
@@ -72,7 +74,7 @@ app.use('*', (req, res) => {
 async function bootstrap() {
   try {
     console.log('Connecting to database...');
-    await createConnection(AppDataSource.options);
+    await initializeDatabase();
     console.log('Database connected successfully');
 
     app.listen(PORT, () => {
@@ -86,6 +88,6 @@ async function bootstrap() {
   }
 }
 
-bootstrap();
+
 
 export default app;

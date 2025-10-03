@@ -9,7 +9,7 @@ import { ClientIntake } from '../entities/ClientIntake';
 
 export const AppDataSource = new DataSource({
   type: 'mongodb',
-  url: process.env.MONGO_URL || 'mongodb://localhost:27017/who_estate',
+  url:  'mongodb://localhost:27017/whoestatedb',
   entities: [
     User,
     Property,
