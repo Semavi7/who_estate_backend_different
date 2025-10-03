@@ -1,0 +1,11 @@
+WhatsApp/node_modules/puppeteer-core/.local-chromium/
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+/build
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+google-cloud-key.json
